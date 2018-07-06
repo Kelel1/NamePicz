@@ -6,10 +6,13 @@ import javax.imageio.ImageIO;
 
 public class Picz {
 
-    public File dir;    
+    public File dir;  
+    static public String fileType; 
+     
     
-    public Picz (File n) {
+    public Picz (File n, String s) {
         this.dir = n;        
+        this.fileType = s;
     }
 
     /** Change name of .png file(s) in folder */
@@ -18,10 +21,11 @@ public class Picz {
     }
 
     static final FilenameFilter IMAGE_FILTER = new FilenameFilter(){
+        
     
         @Override
-        public boolean accept(File dir, String name) {
-            if(name.endsWith("png")) {
+        public boolean accept(File dir, String name) {            
+            if(name.endsWith(fileType)) {
                 return true;
             }
             return false;
@@ -50,9 +54,10 @@ public class Picz {
     public static void main(String[] args) {
 
         File fileName = new File(args[0]);
+        String fileType = args[1];
                 
 
-        Picz poolPix = new Picz(fileName);       
+        Picz poolPix = new Picz(fileName, fileType);       
         
         System.out.println(poolPix.totlPics());
     
