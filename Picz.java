@@ -12,7 +12,7 @@ public class Picz {
         this.dir = n;        
     }
 
-    /** Change name of .png file */
+    /** Change name of .png file(s) in folder */
     public void changeName () {
 
     }
@@ -44,7 +44,9 @@ public class Picz {
         return count;           
     }
 
-
+    /** Must enter full path at command line
+     * /home/usr/Desktop/dir
+     */
     public static void main(String[] args) {
 
         File fileName = new File(args[0]);
