@@ -15,8 +15,24 @@ public class Picz {
         this.fileType = s;
     }
 
-    /** Change name of .png file(s) in folder */
+    /** Change name of file(s) in folder */
     public void changeName () {
+        String path = dir.toString();
+
+        // new folder
+        File poolPics = new File(path);
+
+        File[] picsArray = dir.listFiles();
+
+        for(int i = 0; i < picsArray.length; i++) {
+            File pic = new File(dir + "/" + picsArray[i].getName());
+            String originalName = picsArray[i].getName();
+            String[] tokens = originalName.split("_");
+            String newName = tokens[1];
+           // System.out.println(newName);
+
+            pic.renameTo(new File(dir + "/" + newName));
+        }
 
     }
 
@@ -59,8 +75,13 @@ public class Picz {
 
         Picz poolPix = new Picz(fileName, fileType);       
         
-        System.out.println(poolPix.totlPics());
-    
-        
+     //   System.out.println(poolPix.totlPics());  
+        poolPix.changeName();      
+        // String[] s = new String[poolPix.dir.list().length];
+        // s = poolPix.dir.list();
+       
+        // for(int j = 0; j < 5; j++) {
+        //     System.out.println(s[j]);
+        // }
      }
 }
